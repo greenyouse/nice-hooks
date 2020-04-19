@@ -5,7 +5,6 @@ printError () {
     echo "\n$(tput setaf 1)Error: $1 \n$(tput sgr0)"
 }
 
-
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 IS_MASTER=$(echo $CURRENT_BRANCH | grep "^master$")
 
