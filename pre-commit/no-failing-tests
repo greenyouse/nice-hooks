@@ -1,0 +1,14 @@
+#!/bin/sh
+# Blocks commits when npm scripts for linting and tests fail.
+
+printError () {
+    echo "\n$(tput setaf 1)Error: $1 \n$(tput sgr0)"
+}
+
+HEALTHCHECK_STATUS=$(npm run lint && npm t )
+HAS_ERROR=$(grep -io "npm ERR!" "$HEALTHCHECK_STATUS")
+
+if [ ! -n "$HAS_ERROR" ]; then
+    printError "healthcheck failed!"
+    exit 1
+fi

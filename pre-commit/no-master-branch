@@ -1,0 +1,15 @@
+#!/bin/sh
+# Blocks commits directly to master.
+
+printError () {
+    echo "\n$(tput setaf 1)Error: $1 \n$(tput sgr0)"
+}
+
+
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+IS_MASTER=$(echo $CURRENT_BRANCH | grep "^master$")
+
+if [ -n "$IS_MASTER" ]; then
+    printError "do not commit directly to master branch"
+    exit 1
+fi
