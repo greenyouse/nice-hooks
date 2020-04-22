@@ -5,10 +5,11 @@ printError () {
     echo "\n$(tput setaf 1)Error: $1 \n$(tput sgr0)"
 }
 
-HEALTHCHECK_STATUS=$(npm run lint && npm t )
-HAS_ERROR=$(grep -io "npm ERR!" "$HEALTHCHECK_STATUS")
+NPM_COMMAND=`which npm`
 
-if [ ! -n "$HAS_ERROR" ]; then
-    printError "healthcheck failed!"
+if [ -f "$NPM_COMMAND" ]; then
+    $NPM_COMMAND run lint && $NPM_COMMAND run test
+else
+    echo Missing npm command: $NPM_COMMAND
     exit 1
 fi
