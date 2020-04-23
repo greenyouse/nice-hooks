@@ -1,0 +1,12 @@
+#!/bin/sh
+# Adds [DEP] to the commit message for a dependency commits
+# Generally more useful if you're in the habit of committing with -m.
+
+COMMIT_FILE=$1
+COMMIT_MSG=$(cat $1)
+DIFF_FILES=`git diff-index --name-only HEAD`
+PACKAGE_UPDATE=$'package-lock.json\npackage.json'
+
+if [ "$DIFF_FILES" = "$PACKAGE_UPDATE" ]; then
+    echo "[DEP] $COMMIT_MSG" > $COMMIT_FILE
+fi
