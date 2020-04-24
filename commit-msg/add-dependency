@@ -5,8 +5,9 @@
 COMMIT_FILE=$1
 COMMIT_MSG=$(cat $1)
 DIFF_FILES=`git diff-index --name-only HEAD`
+DIFF_LINES=`git diff HEAD package.json | grep -Eo '\"version\"\:\s+\"[0-9]+\.[0-9]+\.[0-9]+\"'`
 PACKAGE_UPDATE=$'package-lock.json\npackage.json'
 
-if [ "$DIFF_FILES" = "$PACKAGE_UPDATE" ]; then
+if [ "$DIFF_FILES" = "$PACKAGE_UPDATE" ] && [ -z "$DIFF_LINES" ]; then
     echo "[DEP] $COMMIT_MSG" > $COMMIT_FILE
 fi
