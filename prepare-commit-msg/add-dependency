@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Adds [DEP] to the commit message for a dependency commits
 
 COMMIT_FILE=$1

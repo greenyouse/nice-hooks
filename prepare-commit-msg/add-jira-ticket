@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Adds the Jira ticket ID to the commit message.
 
 COMMIT_FILE=$1

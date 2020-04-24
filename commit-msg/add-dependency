@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Adds [DEP] to the commit message for a dependency commits
 # Generally more useful if you're in the habit of committing with -m.
 

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Blocks commits when npm scripts for linting and tests fail.
 
 printError () {

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Blocks commits directly to master.
 
 printError () {
