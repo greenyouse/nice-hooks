@@ -10,6 +10,6 @@ NPM_COMMAND=`which npm`
 if [ -f "$NPM_COMMAND" ]; then
     $NPM_COMMAND run lint && $NPM_COMMAND run test
 else
-    echo Missing npm command: $NPM_COMMAND
+    echo "Missing npm command: $NPM_COMMAND"
     exit 1
 fi
